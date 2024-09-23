@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: my-rs
+spec:
+    selector:
+       matchLabels:       
+         env: prod
+         dc: hyd    
+    replicas: 3
+    template: 
+     metadata:
+       name: my-rs-pod
+       labels: 
+        env: prod
+        dc: hyd
+     spec:
+       containers:
+          - name: c27
+            image: nginx
+            
+
+   
+
