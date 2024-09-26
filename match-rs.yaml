@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    name: my-rs-matched
+spec:
+   replicas: 3
+   selector:
+        matchExpressions: 
+          - key: tier
+            operator: In
+            values:
+               - prod    
+   template:
+      metadata:
+         labels:
+            tier: prod
+            
+      spec:
+          containers:
+              - name: c1
+                image: nginx
+               
